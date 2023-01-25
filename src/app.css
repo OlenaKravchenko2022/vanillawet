@@ -12,7 +12,7 @@ body {
 }
 
 .weather h1 {
-  color: blueviolet;
+  color: rgb(85, 92, 192);
   font-size: 24px;
   font-weight: 500;
   height: 28px;
