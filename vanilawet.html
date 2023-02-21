@@ -25,30 +25,41 @@
       <div class="weather-app-wrapper">
         <div class="weather app">
           <div class="city">
-            <h1>Kyiv, Ukraine</h1>
+            <h1 id="city"></h1>
             <ul>
-              <li>Monday, 5 p.m.</li>
-              <li>clear</li>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description">clear</li>
             </ul>
           </div>
 
           <div class="row">
             <div class="col-6">
-              <img src="" alt="" />
-              12 C/F
+              <div class="weather-temperature">
+                <img src="src" alt="cload" id="icon" />
+                <div class="float-left">
+                  <strong id="temperature"></strong>
+                  <span>℃</span>
+                </div>
+              </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation:</li>
-                <li>Humidity:</li>
-                <li>Wind:</li>
+                <li>Precipitation:<span id="precipitation"></span></li>
+                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind: <span id="wind"></span></li>
+                <li>Sunrise: <span id="sunrise"></span></li>
+                <li>Sunset: <span id="sunset"></span></li>
               </ul>
             </div>
           </div>
         </div>
+        <form id="searchForm">
+          <input type="search" />
+          <button id="searchCity">Enter the city</button>
+        </form>
         <small>It was made by Olena Kravchenko</small>
       </div>
     </div>
   </body>
-  <script href="src/app.js"></script>
+  <script src="src/app.js"></script>
 </html>

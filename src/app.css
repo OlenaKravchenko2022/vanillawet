@@ -1,5 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: lightgoldenrodyellow;
 }
 .weather-app-wrapper {
   max-width: 600px;
@@ -27,7 +28,7 @@ body {
 }
 .weather li {
   list-style: none;
-  margin: 0;
+  margin: 15px;
   color: rgb(45, 45, 88);
   font-size: 16 px;
   font-weight: 100;
@@ -35,4 +36,8 @@ body {
 }
 .city {
   margin-bottom: 20px;
+  margin: 20px;
+}
+.float-left {
+  font-size: 40px;
 }
