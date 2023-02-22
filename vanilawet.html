@@ -25,13 +25,21 @@
       <div class="weather-app-wrapper">
         <div class="weather app">
           <div class="city">
-            <h1 id="city"></h1>
+            <h1 id="city">Kyiv</h1>
             <ul>
               <li>Last updated: <span id="date"></span></li>
               <li id="description">clear</li>
             </ul>
           </div>
-
+          <form id="searchForm" class="mb-5">
+            <input
+              type="search"
+              placeholder="enter the city"
+              class="form-control"
+              id="city-input"
+            />
+            <input type="submit" value="search" class="btn btn-primary" />
+          </form>
           <div class="row">
             <div class="col-6">
               <div class="weather-temperature">
@@ -53,10 +61,16 @@
             </div>
           </div>
         </div>
-        <form id="searchForm">
-          <input type="search" />
-          <button id="searchCity">Enter the city</button>
-        </form>
+        <div class="row">
+          <div class="col-2">
+            <div class="weather-date">Sun</div>
+            <img src="" alt="wet" width="45" />
+            <div class="weather-temperature-forecast">
+              <span class="forecast-min">18</span>
+              <span class="forecast-max">19</span>
+            </div>
+          </div>
+        </div>
         <small>It was made by Olena Kravchenko</small>
       </div>
     </div>

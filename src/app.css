@@ -41,3 +41,14 @@ body {
 .float-left {
   font-size: 40px;
 }
+.weather-temperature-forecast {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.forecast-min {
+  opacity: 0.5;
+}
+.weather-date {
+  opacity: 0.5;
+  font-size: 25px;
+}
