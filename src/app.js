@@ -23,6 +23,27 @@ let month = monthes[now.getMonth()];
 let minutes = now.getMinutes();
 let hours = now.getHours();
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+    <div class="weather-date">${day}</div>
+    <img src="" alt="wet" width="45" />
+    <div class="weather-temperature-forecast">
+      <span class="forecast-min">18</span>
+      <span class="forecast-max">19</span>
+    </div>
+  </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -51,6 +72,8 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+displayForecast();
+
 function search(city) {
   let apiKey = "80ac2935dbe51b68bf72767b13c74d44";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -64,3 +87,5 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
+
+search("Prague");
