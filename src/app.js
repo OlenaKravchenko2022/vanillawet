@@ -23,36 +23,46 @@ let month = monthes[now.getMonth()];
 let minutes = now.getMinutes();
 let hours = now.getHours();
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-    <div class="weather-date">${day}</div>
-    <img src="" alt="wet" width="45" />
+
+  function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+    return days[day];
+  }
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+    <div class="weather-date">${formatDay(forecastDay.dt)}</div>
+    <img src="http://openweathermap.org/img/wn/${
+      forecastDay.weather[0].icon
+    }@2x.png" alt="wet" width="45" />
     <div class="weather-temperature-forecast">
-      <span class="forecast-min">18</span>
-      <span class="forecast-max">19</span>
+      <span class="forecast-min">${Math.round(forecastDay.temp.min)}℃</span>
+      <span class="forecast-max">${Math.round(forecastDay.temp.max)}℃</span>
     </div>
   </div>`;
+    }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "80ac2935dbe51b68bf72767b13c74d44";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let cityElement = document.querySelector("#city");
@@ -80,8 +90,6 @@ function showTemperature(response) {
 
   getForecast(response.data.coord);
 }
-
-displayForecast();
 
 function search(city) {
   let apiKey = "80ac2935dbe51b68bf72767b13c74d44";
